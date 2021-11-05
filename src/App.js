@@ -24,6 +24,7 @@ ItemRow.propTypes = {
   }),
 }
 
+
 const ItemDetail = ({name, alias, motto, type, content, stats}) => (
   <div>
     <h1>{name}</h1>
