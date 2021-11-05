@@ -5,26 +5,28 @@ import PropTypes from "prop-types";
 import './App.css';
 import styled from "@emotion/styled";
 //import list from "./list.json";
+//import ItemType from 'ItemType';
+import ItemRow from "./components/ItemRow";
+
+// const ItemType = PropTypes.shape({
+//   name: PropTypes.string.isRequired,
+//   alias: PropTypes.string.isRequired,
+//   motto: PropTypes.string.isRequired,
+//   type: PropTypes.arrayOf(PropTypes.string.isRequired)
+
+// });
+
+// const ItemRow = ({ listItem, onSelect }) => (
+//           <tr key={listItem.id} onClick={()=> onSelect(listItem)}>
+//             <td>{listItem.name}</td>
+//             <td>{listItem.type.join(", ")}</td>
+//           </tr>
+// );
 
 
-const ItemRow = ({ listItem, onSelect }) => (
-          <tr key={listItem.id} onClick={()=> onSelect(listItem)}>
-            <td>{listItem.name}</td>
-            <td>{listItem.type.join(", ")}</td>
-{/*            <td>
-              <button onClick={()=> onSelect(listItem)}>Select!</button>
-            </td>*/}
-          </tr>
-
-);        
-
-ItemRow.propTypes = {
-  listItem: PropTypes.shape({
-    name: PropTypes.string,
-    type: PropTypes.arrayOf(PropTypes.string)
-  }),
-}
-
+// ItemRow.propTypes = {
+//   listItem: PropTypes.arrayOf(ItemType)
+// }
 
 const ItemDetail = ({name, alias, motto, type, content, stats}) => (
   <div>
@@ -71,20 +73,6 @@ const ItemTitle = styled.h1`
   font-size: x-large;
 `;
 
-
-// class App extends React.Component {
-//   constructor(props){
-//     super(props);
-//     this.state={
-//       filter:"",
-//       list: [],
-//       selectedItem: null,
-//     }
-//   }
-//   render(){
-
-//   }
-// }
 
 function App() {
   const [filter, filterSearch] = React.useState("");
