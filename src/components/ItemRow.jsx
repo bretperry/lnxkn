@@ -16,10 +16,7 @@ import ItemType from '../itemType';
 // });
 
 const ItemRow = ({ listItem, onSelect }) => (
-          <tr key={listItem.id} 
-            onClick={()=> 
-            onSelect(listItem)}
-          >
+          <tr key={listItem.id} onClick={()=>onSelect(listItem)} >
             <td>{listItem.name}</td>
             <td>{listItem.type.join(", ")}</td>
           </tr>

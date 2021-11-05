@@ -1,6 +1,5 @@
 
 import React from 'react';
-import PropTypes from "prop-types";
 
 import './App.css';
 import styled from "@emotion/styled";
@@ -105,10 +104,10 @@ function App() {
           />
           <table width="100%">
             <thead>
-              <th>Command</th>
-              <th>Type</th>
             </thead>
             <tbody>
+              <th>Command</th>
+              <th>Type</th>
               {list
                 .filter((it) => it.name.toLowerCase().includes(filter.toLowerCase()))
                 .slice(0, 20)
