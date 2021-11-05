@@ -72,73 +72,111 @@ const ItemTitle = styled.h1`
 `;
 
 
-// class App extends React.Component {
-//   constructor(props){
-//     super(props);
-//     this.state={
-//       filter:"",
-//       list: [],
-//       selectedItem: null,
-//     }
-//   }
-//   render(){
-
-//   }
-// }
-
-function App() {
-  const [filter, filterSearch] = React.useState("");
-  const [list, listSet] = React.useState(null);
-  const [selectedItem, selectedItemSet] = React.useState(null);
-  
-  React.useEffect(()=> {
-    fetch("/list.json")
-      .then(resp => resp.json())
-      .then((data) => {
-        listSet(data);
-        console.log(data);
-      });
-  }, []);
-
-  if (!list) {
-    return <div>Loading data</div>;
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      filter:"",
+      list: [],
+      selectedItem: null,
+    }
   }
 
-  return (
-    <PageContainer>
-      <Title>Linux Lexicon</Title>
+  componentDidMount(){
+    fetch("/list.json")
+      .then(resp => resp.json())
+      .then((data) => 
+        this.setState({
+          ...this.state,
+          list: data,
+        })
+      );
+  }
 
-      <Columns>
 
-        <div>
-          <Input
-            value={filter}
-            onChange={(evt)=> filterSearch(evt.target.value)}
-          />
-          <table width="100%">
-            <thead>
-              <th>Command</th>
-              <th>Type</th>
-            </thead>
-            <tbody>
-              {list
-                .filter((it) => it.name.toLowerCase().includes(filter.toLowerCase()))
-                .slice(0, 20)
-                .map((item) =>(
-                  <ItemRow 
-                    listItem={item} 
-                    key={item.id} 
-                    onSelect={(item) => selectedItemSet(item)}
-                  />
-             ))}
-            </tbody>
-          </table>
-        </div>
-        {selectedItem && <ItemDetail {...selectedItem} />}
-      </Columns>
-
-    </PageContainer>
-  );
+  render(){
+    return (
+      <PageContainer>
+        <Title>Linux Lexicon</Title>
+        <Columns>
+          <div>
+            <Input
+              value={this.state.filter}
+              onChange={(evt)=> this.setState({
+                ...this.state,
+                filter: evt.target.value
+              })}
+            />
+            <table width="100%">
+              <thead>
+                <th>Command</th>
+                <th>Type</th>
+              </thead>
+              <tbody>
+                {this.state.list
+                  .filter((it) => it.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+                  .slice(0, 20)
+                  .map((item) =>(
+                    <ItemRow 
+                      listItem={item} 
+                      key={item.id} 
+                      onSelect={(item) => this.setState({
+                        ...this.state,
+                        selectedItem: item
+                      })}
+                    />
+               ))}
+              </tbody>
+            </table>
+          </div>
+          {this.state.selectedItem && <ItemDetail {...this.state.selectedItem} />}
+        </Columns>
+      </PageContainer>
+    );
+  }
 }
+
+// function App() {
+//   const [filter, filterSearch] = React.useState("");
+//   const [list, listSet] = React.useState(null);
+//   const [selectedItem, selectedItemSet] = React.useState(null);
+  
+
+//   return (
+//     // <PageContainer>
+//     //   <Title>Linux Lexicon</Title>
+
+//     //   <Columns>
+
+//     //     <div>
+//     //       <Input
+//     //         value={filter}
+//     //         onChange={(evt)=> filterSearch(evt.target.value)}
+//     //       />
+//     //       <table width="100%">
+//     //         <thead>
+//     //           <th>Command</th>
+//     //           <th>Type</th>
+//     //         </thead>
+//     //         <tbody>
+//     //           {list
+//     //             .filter((it) => it.name.toLowerCase().includes(filter.toLowerCase()))
+//     //             .slice(0, 20)
+//     //             .map((item) =>(
+//     //               <ItemRow 
+//     //                 listItem={item} 
+//     //                 key={item.id} 
+//     //                 onSelect={(item) => selectedItemSet(item)}
+//     //               />
+//     //          ))}
+//     //         </tbody>
+//     //       </table>
+//     //     </div>
+//     //     {selectedItem && <ItemDetail {...selectedItem} />}
+//     //   </Columns>
+
+//     // </PageContainer>
+//   )
+// }
 
 export default App;
