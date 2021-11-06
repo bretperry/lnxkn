@@ -5,7 +5,8 @@ const ItemType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   alias: PropTypes.string.isRequired,
   motto: PropTypes.string.isRequired,
-  type: PropTypes.arrayOf(PropTypes.string.isRequired)
+  //ype: PropTypes.arrayOf(PropTypes.string.isRequired),
+  content: PropTypes.string
 
 });
 

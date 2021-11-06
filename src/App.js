@@ -1,11 +1,14 @@
 
 import React from 'react';
-
 import './App.css';
 import styled from "@emotion/styled";
-//import list from "./list.json";
-//import ItemType from 'ItemType';
+
+//import SelectContext from "./SelectContext";
 import ItemRow from "./components/ItemRow";
+import ItemDetail from "./components/ItemDetail";
+import FilterZone from "./components/FilterZone";
+import CommandTable from "./components/CommandTable";
+
 
 // const ItemType = PropTypes.shape({
 //   name: PropTypes.string.isRequired,
@@ -27,27 +30,27 @@ import ItemRow from "./components/ItemRow";
 //   listItem: PropTypes.arrayOf(ItemType)
 // }
 
-const ItemDetail = ({name, alias, motto, type, content, stats}) => (
-  <div>
-    <ItemTitle>{name}</ItemTitle>
-    <p>alias: {alias}</p>
-    <p>motto: {motto}</p>
-    <p>spheres: {type.join(", ")}</p>
-    {stats &&       
-      <table>
-        <tbody>
-          {Object.keys(stats).map((key) => (
-            <tr key={key}>
-              <td>{key}</td>
-              <td>{stats[key]}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    }
-    <div>{content}</div>
-  </div>
-);
+// const ItemDetail = ({name, alias, motto, type, content, stats}) => (
+//   <div>
+//     <ItemTitle>{name}</ItemTitle>
+//     <p>alias: {alias}</p>
+//     <p>motto: {motto}</p>
+//     <p>spheres: {type.join(", ")}</p>
+//     {stats &&       
+//       <table>
+//         <tbody>
+//           {Object.keys(stats).map((key) => (
+// {/*            <tr key={key}>
+//               <td>{key}</td>
+//               <td>{stats[key]}</td>
+//             </tr>*/}
+//           ))}
+//         </tbody>
+//       </table>
+//     }
+//     <div>{content}</div>
+//   </div>
+// );
 
 const Title = styled.h1`
   text-align:center;
@@ -62,28 +65,25 @@ const Columns = styled.div`
   grid-template-columns: 50% 50%;
   grid-column-gap: 1rem;
 `;
-const Input = styled.input`
-  width: 100%;
-  padding: 0.2rem;
-  font-size: large;
-`;
-const ItemTitle = styled.h1`
-  margin: 0;
-  font-size: x-large;
-`;
+
 
 
 function App() {
-  const [filter, filterSearch] = React.useState("");
+
+  console.log("initializing App...");
+  
+  const [filter, filterSet] = React.useState("");
   const [list, listSet] = React.useState(null);
   const [selectedItem, selectedItemSet] = React.useState(null);
+
+  console.log("filter: ", filter);
   
   React.useEffect(()=> {
     fetch("/list.json")
       .then(resp => resp.json())
       .then((data) => {
         listSet(data);
-        console.log(data);
+        console.log("received ajax data: " + data);
       });
   }, []);
 
@@ -92,39 +92,23 @@ function App() {
   }
 
   return (
-    <PageContainer>
-      <Title>Linux Lexicon</Title>
-
-      <Columns>
-
-        <div>
-          <Input
-            value={filter}
-            onChange={(evt)=> filterSearch(evt.target.value)}
-          />
-          <table width="100%">
-            <thead>
-            </thead>
-            <tbody>
-              <th>Command</th>
-              <th>Type</th>
-              {list
-                .filter((it) => it.name.toLowerCase().includes(filter.toLowerCase()))
-                .slice(0, 20)
-                .map((item) =>(
-                  <ItemRow 
-                    listItem={item} 
-                    key={item.id} 
-                    onSelect={(item) => selectedItemSet(item)}
-                  />
-             ))}
-            </tbody>
-          </table>
-        </div>
-        {selectedItem && <ItemDetail {...selectedItem} />}
-      </Columns>
-
-    </PageContainer>
+      <PageContainer>
+        <Title>Linux Lexicon</Title>
+        <Columns>
+          <div>
+            <FilterZone 
+              filter={filter}
+              filterSet={filter}
+            />
+            <CommandTable 
+              filter={filter}
+              list={list}
+              selectedItemSet={selectedItemSet}
+            />
+          </div>
+          {selectedItem && <ItemDetail {...selectedItem} />}
+        </Columns>
+      </PageContainer>
   );
 }
 

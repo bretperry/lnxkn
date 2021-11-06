@@ -16,15 +16,15 @@ import ItemType from '../itemType';
 // });
 
 const ItemRow = ({ listItem, onSelect }) => (
-          <tr key={listItem.id} onClick={()=>onSelect(listItem)} >
-            <td>{listItem.name}</td>
+          <tr key={listItem.id} onClick={()=>onSelect(listItem)}>
+            <td>{listItem.name}{console.log(listItem.name)} </td>
             <td>{listItem.type.join(", ")}</td>
           </tr>
 );
 
 
-ItemRow.propTypes = {
-  listItem: PropTypes.arrayOf(ItemType)
-}
+// ItemRow.propTypes = {
+//   listItem: PropTypes.arrayOf(ItemType)
+// }
 
 export default ItemRow;
