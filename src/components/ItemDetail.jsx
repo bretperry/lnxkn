@@ -8,9 +8,11 @@ const ItemTitle = styled.h1`
 `;
 
 const ItemDetail = () => {
+  console.log("init ItemDetail");
   const {selectedItem} = useContext(MainContext);
   let s = selectedItem;
-  return(
+  console.log("ItemDetail selectedItem = ", s );
+  return s ? (
     <div>
       <ItemTitle>{s.name}</ItemTitle>
       <p>alias: {s.alias}</p>
@@ -30,7 +32,7 @@ const ItemDetail = () => {
       }
       <div>{s.content}</div>
     </div>
-  );
+  ) : null;
 };
 
 

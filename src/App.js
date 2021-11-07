@@ -106,14 +106,12 @@ function App() {
         <Title>Linux Lexicon</Title>
         <Columns>
           <div>
-            {/* remove these props once context is working */}
             { console.log("outputing FilterZone...")}
             <FilterZone />
             { console.log("outputing CommandTable...")}
             <CommandTable />
           </div>
-          {/* if selected item exist print ItemDetail*/}
-          {selectedItem && <ItemDetail {...selectedItem} />}
+          <ItemDetail />
         </Columns>
       </PageContainer>
     </MainContext.Provider>
