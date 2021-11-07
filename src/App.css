@@ -1,13 +1,9 @@
-.title{
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
-th{
-  text-align: left;
-  font-size: x-large;
+body{
+  font-family:  Futura;
+  background-color: #e2fffd !important;
 }
-input{
-  width: 100%;
-  font-size: x-large;
-  padding:  .2rem;
+p{
+  margin:  0 auto 1rem;
 }

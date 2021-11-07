@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import styled from "@emotion/styled";
 import MainContext from "../MainContext";
+import cssVars from "../cssVars";
 
 const Input = styled.input`
   width: 100%;
   padding: 0.2rem;
   font-size: large;
+  border: none;
 `;
 
 // const FilterZone = ({filter, filterSet}) => {

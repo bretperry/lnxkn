@@ -2,6 +2,7 @@
 import React from 'react';
 import './App.css';
 import styled from "@emotion/styled";
+import cssVars from "./cssVars";
 
 import MainContext from "./MainContext";
 import ItemRow from "./components/ItemRow";
@@ -54,15 +55,19 @@ import CommandTable from "./components/CommandTable";
 
 const Title = styled.h1`
   text-align:center;
+  font-family:Futura, sans serif;
+  font-weight: normal;
+  letter-spacing: .6rem;
 `;
 const PageContainer = styled.div`
   margin: auto;
-  width: 800px;
+  max-width: 900px;
   padding-top: 1em;
+  color:${cssVars.fontColor};
 `;
 const Columns = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 67%;
   grid-column-gap: 1rem;
 `;
 
@@ -76,7 +81,12 @@ function App() {
   const [list, listSet] = React.useState(null);
   const [selectedItem, selectedItemSet] = React.useState(null);
 
-  console.log("filter: ", filter);
+  const typeIcons = {
+    networking: "&#128423;",
+    disk: "&#128436;"
+  }
+
+  console.log("filterSet: ", filterSet);
   
   React.useEffect(()=> {
     fetch("/list.json")
@@ -100,6 +110,7 @@ function App() {
         listSet,
         selectedItem,
         selectedItemSet,
+        typeIcons
       }}
     >
       <PageContainer>
