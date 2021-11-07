@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import styled from "@emotion/styled";
 
-//import SelectContext from "./SelectContext";
+import MainContext from "./MainContext";
 import ItemRow from "./components/ItemRow";
 import ItemDetail from "./components/ItemDetail";
 import FilterZone from "./components/FilterZone";
@@ -92,23 +92,31 @@ function App() {
   }
 
   return (
+    <MainContext.Provider
+      value={{
+        filter,
+        list,
+        filterSet,
+        listSet,
+        selectedItem,
+        selectedItemSet,
+      }}
+    >
       <PageContainer>
         <Title>Linux Lexicon</Title>
         <Columns>
           <div>
-            <FilterZone 
-              filter={filter}
-              filterSet={filter}
-            />
-            <CommandTable 
-              filter={filter}
-              list={list}
-              selectedItemSet={selectedItemSet}
-            />
+            {/* remove these props once context is working */}
+            { console.log("outputing FilterZone...")}
+            <FilterZone />
+            { console.log("outputing CommandTable...")}
+            <CommandTable />
           </div>
+          {/* if selected item exist print ItemDetail*/}
           {selectedItem && <ItemDetail {...selectedItem} />}
         </Columns>
       </PageContainer>
+    </MainContext.Provider>
   );
 }
 
