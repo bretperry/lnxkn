@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+
 import styled from "@emotion/styled";
-import MainContext from "../MainContext";
+
+//import MainContext from "../MainContext";
 import cssVars from "../cssVars";
 
 const Input = styled.input`
@@ -22,7 +25,9 @@ const Input = styled.input`
 // };
 
 const FilterZone = () => {
-	const { state: {filter}, dispatch} = React.useContext(MainContext);
+	const dispatch = useDispatch();
+	const filter = useSelector(state => state.filter);
+	// const { state: {filter}, dispatch} = React.useContext(MainContext);
 	return(
 		<Input
 	    	type ="text"

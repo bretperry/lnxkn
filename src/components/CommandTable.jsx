@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled from "@emotion/styled";
-import MainContext from "../MainContext";
+import { Provider, useSelector, useDispatch } from 'react-redux';
+
+// import MainContext from "../MainContext";
 import ItemRow from "../components/ItemRow";
 import cssVars from "../cssVars";
 
@@ -51,11 +53,13 @@ const Tbody = styled.tbody`
 `;
 
 const CommandTable = () => {
-	
-	const {
-		state: {list, filter },
-		dispatch,  
-	} = React.useContext(MainContext);
+	const dispatch = useDispatch();
+	const list = useSelector(state => state.list);
+	const filter = useSelector(state => state.filter);
+	// const {
+	// 	state: {list, filter },
+	// 	dispatch,  
+	// } = React.useContext(MainContext);
 	
 	// const {list, filter, selectedItemSet } = useContext(MainContext);
 	

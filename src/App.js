@@ -1,16 +1,26 @@
 
 import React from 'react';
-import './App.css';
 import styled from "@emotion/styled";
+import { createStore } from 'redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+
+
+import './App.css';
 import cssVars from "./cssVars";
 
-import MainContext from "./MainContext";
+
+// import MainContext from "./MainContext";
 import ItemRow from "./components/ItemRow";
 import ItemDetail from "./components/ItemDetail";
 import FilterZone from "./components/FilterZone";
 import CommandTable from "./components/CommandTable";
 
-const magickReducer = (state, action) => {
+
+const magickReducer = (state = {
+  list: [],
+  filter: "",
+  selectedItem: null,
+}, action) => {
   switch (action.type){
     case "SET_FILTER":
       return {
@@ -28,9 +38,11 @@ const magickReducer = (state, action) => {
         selectedItem: action.payload,
       }; 
     default:
-      throw new Error("No action");
+      return state;
   }
 };
+
+const store = createStore(magickReducer);
 
 const Title = styled.h1`
   text-align:center;
@@ -50,21 +62,20 @@ const Columns = styled.div`
   grid-column-gap: 1rem;
 `;
 
-
-
 function App() {
-
   console.log("initializing App...");
+  const dispatch = useDispatch();
+  const list = useSelector(state => state.list);
   
   // const [filter, filterSet] = React.useState("");
   // const [list, listSet] = React.useState(null);
   // const [selectedItem, selectedItemSet] = React.useState(null);
   
-  const [state,dispatch] = React.useReducer(magickReducer, {
-    list: [],
-    filter: "",
-    selectedItem: null,
-  });
+  // const [state,dispatch] = React.useReducer(magickReducer, {
+  //   list: [],
+  //   filter: "",
+  //   selectedItem: null,
+  // });
 
   const typeIcons = {
     networking: "&#128423;",
@@ -82,10 +93,10 @@ function App() {
       );
   }, []);
 
-  if (!state.list) {
+  if (!list) {
     return <div>Loading data</div>;
   }
-  console.log("state= ",state);
+  //console.log("state= ",state);
 
   // React.useEffect(()=> {
   //   fetch("/list.json")
@@ -101,13 +112,6 @@ function App() {
   // }
 
   return (
-    <MainContext.Provider
-      value={{
-        typeIcons,
-        state,
-        dispatch
-      }}
-    >
       <Container>
         <Title>Linux Lexicon</Title>
         <Columns>
@@ -120,8 +124,7 @@ function App() {
           <ItemDetail />
         </Columns>
       </Container>
-    </MainContext.Provider>
   );
 }
 
-export default App;
+export default () => <Provider store={store}><App /></Provider>;

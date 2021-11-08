@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import styled from "@emotion/styled";
 import MainContext from "../MainContext";
 import cssVars from "../cssVars";
@@ -35,33 +36,36 @@ const ItemDetail = () => {
 
   // const { state:{selectedItem} } = useContext(MainContext);
 
-  const { 
-    state: {selectedItem}, 
-  } = React.useContext(MainContext);
+  // const { 
+  //   state: {selectedItem}, 
+  // } = React.useContext(MainContext);
+  const dispatch = useDispatch();
+  const list = useSelector(state => state.list);
+  const sel = useSelector(state => state.selectedItem);
   //debugger;
   //et s = selectedItem;
 
   //console.log("selectedItem.name = ", selectedItem.name );
 
-  return selectedItem ? (
+  return sel ? (
     <div>
-      <ItemTitle>{selectedItem.alias || 'big time linux'}</ItemTitle>
+      <ItemTitle>{sel.alias || 'big time linux'}</ItemTitle>
       <DeetsDiv>
-              {selectedItem.stats &&       
+              {sel.stats &&       
           <StatsTable>
             <tbody>
-              {Object.keys(selectedItem.stats).map((key) => (
+              {Object.keys(sel.stats).map((key) => (
                 <tr key={key}>
                   <td>{key}</td>
-                  <td>{selectedItem.stats[key]}</td>
+                  <td>{sel.stats[key]}</td>
                 </tr>
               ))}
             </tbody>
           </StatsTable>
         }
-        <p>{selectedItem.motto || "damn snazzy motto"}</p>
-        <p>spheres: {selectedItem.type.join(", ")}</p>
-        <div>{selectedItem.content || "notes here"}</div>
+        <p>{sel.motto || "damn snazzy motto"}</p>
+        <p>spheres: {sel.type.join(", ")}</p>
+        <div>{sel.content || "notes here"}</div>
         <div>"man pages"</div>
       </DeetsDiv>
     </div>
