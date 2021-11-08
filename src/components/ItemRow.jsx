@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import MainContext from "../MainContext";
+//import MainContext from "../MainContext";
 
 import ItemType from '../itemType';
 
@@ -27,7 +27,7 @@ const Span = styled.span`
 const ItemRow = ({ listItem, onSelect }) => {
 
   return(
-    <tr key={listItem.id} onClick={()=>onSelect(listItem)}>
+    <tr onClick={()=>onSelect(listItem)}>
       <TdName>
         {listItem.name}{console.log(listItem.name)} 
         <Span>{listItem.type.join(", ")}</Span>

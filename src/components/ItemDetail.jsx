@@ -1,8 +1,12 @@
-import React, { useEffect, useContext } from 'react';
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import useStore from "../store";
+import React, { useEffect } from 'react';
+//import { Provider, useSelector, useDispatch } from 'react-redux';
+// import useStore from "../store";
 import styled from "@emotion/styled";
-import MainContext from "../MainContext";
+// import MainContext from "../MainContext";
+
+import { observer } from "mobx-react";
+
+import store from "../store";
 import cssVars from "../cssVars";
 
 const manUrlRoot = "https://man.cx/";
@@ -44,8 +48,8 @@ const ItemDetail = () => {
   // const list = useSelector(state => state.list);
   // const sel = useSelector(state => state.selectedItem);
 
-  const list = useStore(state => state.list);
-  const sel = useStore(state => state.selectedItem);
+  // const list = useStore(state => state.list);
+  // const sel = useStore(state => state.selectedItem);
 
 
 
@@ -54,6 +58,7 @@ const ItemDetail = () => {
 
   //console.log("selectedItem.name = ", selectedItem.name );
 
+  let sel = store.selectedItem;
   return sel ? (
     <div>
       <ItemTitle>{sel.alias || 'big time linux'}</ItemTitle>
@@ -79,4 +84,4 @@ const ItemDetail = () => {
   ) : null;
 };
 
-export default ItemDetail;
+export default observer(ItemDetail);

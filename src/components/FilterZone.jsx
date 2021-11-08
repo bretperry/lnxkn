@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 //import { useDispatch } from 'react-redux';
-import useStore from "../store";
+import { observer } from "mobx-react";
+
+import store from "../store";
+
 import styled from "@emotion/styled";
 
 //import MainContext from "../MainContext";
@@ -25,9 +28,9 @@ const Input = styled.input`
 // };
 
 const FilterZone = () => {
-  const list = useStore(state => state.list);
-  const filter = useStore(state => state.filter);
-  const setFilter = useStore(state => state.setFilter);
+  // const list = useStore(state => state.list);
+  // const filter = useStore(state => state.filter);
+  // const setFilter = useStore(state => state.setFilter);
 
 
 	// const dispatch = useDispatch();
@@ -36,12 +39,12 @@ const FilterZone = () => {
 	return(
 		<Input
 	    	type ="text"
-	    	value={filter}
+	    	value={store.filter}
 	    	onChange={(evt)=> 
-	    		setFilter(evt.target.value)
+	    		store.setFilter(evt.target.value)
 	    	}
 		/>
 	);
 };
 
-export default FilterZone;
+export default observer(FilterZone);

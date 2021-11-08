@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from "@emotion/styled";
-import { Provider, useSelector, useDispatch } from 'react-redux';
-import useStore from "../store";
+//import { Provider, useSelector, useDispatch } from 'react-redux';
+import { observer } from "mobx-react";
+
+import store from "../store";
 
 // import MainContext from "../MainContext";
 import ItemRow from "../components/ItemRow";
@@ -58,9 +60,9 @@ const CommandTable = () => {
 	// const list = useSelector(state => state.list);
 	// const filter = useSelector(state => state.filter);
 
-  const list = useStore(state => state.list);
-  const filter = useStore(state => state.filter);
-  const setSelected = useStore(state => state.setSelected);
+  // const list = useStore(state => state.list);
+  // const filter = useStore(state => state.filter);
+  // const setSelected = useStore(state => state.setSelected);
 
 
 
@@ -80,16 +82,14 @@ const CommandTable = () => {
 	      </tr>
 	    </Thead>
 	    <Tbody>
-	      {list
-	        .filter((it) => it.name.toLowerCase().includes(filter.toLowerCase()))
-	        .slice(0, 20)
+	      {store.filteredList
 	        .map((item) =>(
 	          <ItemRow 
 	            listItem={item} 
 	            key={item.name} 
 	            onSelect={(item) => 
-	            	setSelected(item)
-	            }
+	            	store.setSelected(item)
+	   			}
 	          />
 	     ))}
 	    </Tbody>
@@ -98,4 +98,4 @@ const CommandTable = () => {
 };
 
 
-export default CommandTable;
+export default observer(CommandTable);

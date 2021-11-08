@@ -3,22 +3,22 @@ import React from 'react';
 import styled from "@emotion/styled";
 // import { createStore } from 'redux';
 // import { Provider, useSelector, useDispatch } from 'react-redux';
-import useStore from "./store";
+//import useStore from "./store";
 
 import './App.css';
 import cssVars from "./cssVars";
 
 
 // import MainContext from "./MainContext";
-import ItemRow from "./components/ItemRow";
+//import ItemRow from "./components/ItemRow";
 import ItemDetail from "./components/ItemDetail";
 import FilterZone from "./components/FilterZone";
 import CommandTable from "./components/CommandTable";
 
-  const typeIcons = {
+const typeIcons = {
     networking: "&#128423;",
     disk: "&#128436;"
-  }
+}
 
 // const magickReducer = (state = {
 //   list: [],
@@ -81,18 +81,18 @@ function App() {
   //   selectedItem: null,
   // });
 
-  const list = useStore(state => state.list);
-  const setList = useStore(state => state.setList);
+  // const list = useStore(state => state.list);
+  // const setList = useStore(state => state.setList);
   
-  React.useEffect(()=> {
-    fetch("/list.json")
-      .then(resp => resp.json())
-      .then(setList);
-  }, []);
+  // React.useEffect(()=> {
+  //   fetch("/list.json")
+  //     .then(resp => resp.json())
+  //     .then(setList);
+  // }, []);
 
-  if (!list) {
-    return <div>Loading data</div>;
-  }
+  // if (!list) {
+  //   return <div>Loading data</div>;
+  // }
   //console.log("state= ",state);
 
   // React.useEffect(()=> {
