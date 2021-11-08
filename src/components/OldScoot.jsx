@@ -35,8 +35,37 @@ const StatsTable = styled.table`
   margin: .2rem;
 `;
 
-const ItemDetail = () => {
-  console.log("init ItemDetail");
+const TheDeets = () => {
+  console.log("init TheDeets");
+
+  const manZone = document.getElementById('man');
+  const sel = store.selectedItem || null;
+
+  //console.log("sel = ",sel);
+
+  // const manUrl = !!sel ? {manUrlRoot+store.sel.name} : null;
+  //console.log("manUrl = ",manUrl);
+  
+
+  const getRawData = (URL) => {
+   return fetch(URL)
+      .then((response) => response.text())
+      .then((data) => {
+         return data;
+      });
+  };
+
+  const getManPage = (name) => {
+    let manUrl = manUrlRoot+name;
+    // let rawData = getRawData(manUrl);
+
+
+    let data = "icy hot is hot to trot" + name ;
+    return data;
+  }
+
+
+
   // const {selectedItem} = useContext(MainContext);
 
   // const { state:{selectedItem} } = useContext(MainContext);
@@ -58,10 +87,10 @@ const ItemDetail = () => {
 
   //console.log("selectedItem.name = ", selectedItem.name );
 
-  let sel = store.selectedItem;
+
   return sel ? (
     <div>
-      <ItemTitle>{sel.alias || 'big time linux'}</ItemTitle>
+      <ItemTitle>{sel.alias }</ItemTitle>
       <DeetsDiv>
               {sel.stats &&       
           <StatsTable>
@@ -75,13 +104,13 @@ const ItemDetail = () => {
             </tbody>
           </StatsTable>
         }
-        <p>{sel.motto || "damn snazzy motto"}</p>
+        <p>{sel.motto }</p>
         <p>spheres: {sel.type.join(", ")}</p>
-        <div>{sel.content || "notes here"}</div>
-        <div>"man pages"</div>
+        <div>{sel.content}</div>
+        <div className="man"></div>
       </DeetsDiv>
     </div>
   ) : null;
 };
 
-export default observer(ItemDetail);
+export default observer(TheDeets);
