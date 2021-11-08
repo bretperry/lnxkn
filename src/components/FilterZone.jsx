@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Provider, useSelector, useDispatch } from 'react-redux';
-
+//import { useDispatch } from 'react-redux';
+import useStore from "../store";
 import styled from "@emotion/styled";
 
 //import MainContext from "../MainContext";
@@ -25,17 +25,21 @@ const Input = styled.input`
 // };
 
 const FilterZone = () => {
-	const dispatch = useDispatch();
-	const filter = useSelector(state => state.filter);
+  const list = useStore(state => state.list);
+  const filter = useStore(state => state.filter);
+  const setFilter = useStore(state => state.setFilter);
+
+
+	// const dispatch = useDispatch();
+	// const filter = useSelector(state => state.filter);
 	// const { state: {filter}, dispatch} = React.useContext(MainContext);
 	return(
 		<Input
 	    	type ="text"
 	    	value={filter}
-	    	onChange={(evt)=> dispatch({
-	    		type: 'SET_FILTER',
-	    		payload: evt.target.value
-	    	})}
+	    	onChange={(evt)=> 
+	    		setFilter(evt.target.value)
+	    	}
 		/>
 	);
 };

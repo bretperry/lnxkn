@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from "@emotion/styled";
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import useStore from "../store";
 
 // import MainContext from "../MainContext";
 import ItemRow from "../components/ItemRow";
@@ -53,9 +54,16 @@ const Tbody = styled.tbody`
 `;
 
 const CommandTable = () => {
-	const dispatch = useDispatch();
-	const list = useSelector(state => state.list);
-	const filter = useSelector(state => state.filter);
+	// const dispatch = useDispatch();
+	// const list = useSelector(state => state.list);
+	// const filter = useSelector(state => state.filter);
+
+  const list = useStore(state => state.list);
+  const filter = useStore(state => state.filter);
+  const setSelected = useStore(state => state.setSelected);
+
+
+
 	// const {
 	// 	state: {list, filter },
 	// 	dispatch,  
@@ -79,10 +87,9 @@ const CommandTable = () => {
 	          <ItemRow 
 	            listItem={item} 
 	            key={item.name} 
-	            onSelect={(item) => dispatch({
-	            	type: "SET_SELECTED",
-	            	payload: item,
-	            })}
+	            onSelect={(item) => 
+	            	setSelected(item)
+	            }
 	          />
 	     ))}
 	    </Tbody>

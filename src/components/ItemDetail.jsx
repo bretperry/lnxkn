@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import useStore from "../store";
 import styled from "@emotion/styled";
 import MainContext from "../MainContext";
 import cssVars from "../cssVars";
@@ -39,9 +40,15 @@ const ItemDetail = () => {
   // const { 
   //   state: {selectedItem}, 
   // } = React.useContext(MainContext);
-  const dispatch = useDispatch();
-  const list = useSelector(state => state.list);
-  const sel = useSelector(state => state.selectedItem);
+  // const dispatch = useDispatch();
+  // const list = useSelector(state => state.list);
+  // const sel = useSelector(state => state.selectedItem);
+
+  const list = useStore(state => state.list);
+  const sel = useStore(state => state.selectedItem);
+
+
+
   //debugger;
   //et s = selectedItem;
 
