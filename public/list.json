@@ -1,6 +1,20 @@
 [
 
-
+    {
+      "name": "chown",
+      "alias": "Change Ownership of file",
+      "example": "cd /myfile/application",
+      "motto": "How you get around.",
+      "type": [
+        "file",
+        "user"
+      ],
+      "stats":{
+        "ubiquity":9,
+        "danger":3
+      },
+      "content": ""
+    },
     {
       "name": "cd",
       "alias": "Change Directory",
@@ -13,12 +27,12 @@
         "ubiquity":9,
         "danger":3
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "dd",
       "alias": "Data Duplicator",
-      "example": "dd if = /dev/sda of = /dev/sdb conv=noerror, sync",
+      "example": "dd if = /dev/sda of = /dev/sdb bs=1M status=progress conv=noerror, sync",
       "motto": "Watch where you're writing.",
       "type": [
         "disk"
@@ -27,12 +41,12 @@
         "abundance":4,
         "danger":2
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": "The dd command is used to do many important things. The most common and widespread use of the dd command is to make bootable USB drives from an ISO or IMG image file. But there are other usages of the dd command as well. For example, the dd command can be used to make a backup of the partition table, convert texts and files, install a bootloader to a hard disk drive, SSD or USB drive. The dd command can also be used to make test the performance of storage devices such as latency of your hard drive, read and write speed of your hard drive etc."
     },
     {
       "name": "grep",
-      "path": "/grep",
-      "desc": "grope the disk",
+      "alias": "Grope Recursively Every Parsec",
+      "example": "grope the disk",
       "type": [
         "disk",
         "search"
@@ -40,18 +54,36 @@
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     },
     {
-      "name": "ipconfig",
-      "path": "/ipconfig",
-      "desc": "configure that ipssissimus",
+      "name": "ifconfig",
+      "alias": "Interface Configuration",
+      "example": "ifconfig [-a] [-v] [-s] <interface> [[<AF>] <address>]",
       "type": [
         "networking"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "stats":{
+        "hooplah":5,
+        "beard":9
+      },
+      "content": "The configurations set with the ifconfig command are not persistent. After a system restart, all changes are lost. To make the changes permanent, you need to edit the distro-specific configuration files or add the commands to a startup script. \n Only root or users with sudo privileges can configure network interfaces."
+    },
+        {
+      "name": "kill",
+      "alias": "Kill process by PID",
+      "example": "kill process by uttering its daemonic name",
+      "type": [
+        "process",
+        "stop"
+      ],
+      "stats":{
+        "regret":3,
+        "angst":4
+      },
+      "content": ""
     },
     {
       "name": "killall",
-      "path": "/killall",
-      "desc": "kill process by uttering its daemonic name",
+      "alias": "/killall",
+      "example": "kill process by uttering its daemonic name",
       "type": [
         "process",
         "stop"
@@ -64,8 +96,8 @@
     },
     {
       "name": "pwd",
-      "path": "/pwd",
-      "desc": "pwn password",
+      "alias": "Set Password",
+      "example": "pwd password",
       "type": [
         "user",
         "networking"
@@ -74,7 +106,7 @@
     },
     {
       "name": "ssh",
-      "path": "/ssh",
+      "alias": "/ssh",
       "motto": "secure socket shell",
       "type": [
         "networking",
@@ -84,42 +116,58 @@
     },
     {
       "name": "tcpdump",
-      "path": "/tcpdump",
+      "alias": "data-network packet analyzer",
       "motto": "toss cookies properly",
       "type": [
-        "disk",
         "network"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "touch ",
-      "path": "/touch",
-      "motto": "Change file timestamps",
+      "alias": "create or timestamp file",
+      "example": "Change file timestamps",
       "type": [
         "file",
         "disk"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
-      "name": "user",
-      "path": "/user",
-      "motto": "who is user",
+      "name": "users",
+      "alias": "Show logged in users",
+      "example":"users /var/log/utmp",
       "type": [
-        "disk",
-        "search"
+        "user"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
+    },
+        {
+      "name": "useradd",
+      "alias": "Add a user",
+      "example":"useradd finnthehuman",
+      "type": [
+        "user"
+      ],
+      "content": ""
+    },
+    {
+      "name": "userdel",
+      "alias": "Delete a user",
+      "example":"userdel jakethedog",
+      "type": [
+        "user"
+      ],
+      "content": ""
     },
     {
       "name": "whoami",
-      "path": "/whoami",
-      "motto": "who do i be?",
+      "alias": "What is my user name?",
+      "example":"",
       "type": [
         "user",
         "networking"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": "Gives user name, id has largely replaced this"
     }
   ]

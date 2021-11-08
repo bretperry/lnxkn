@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "@emotion/styled";
-
+import { observer } from "mobx-react";
 
 import ItemType from '../itemType';
 
@@ -25,4 +25,4 @@ const ItemRow = ({ listItem, onSelect }) => {
 };
 
 
-export default ItemRow;
+export default observer(ItemRow);

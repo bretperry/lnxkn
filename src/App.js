@@ -22,6 +22,7 @@ const Title = styled.h1`
 const Container = styled.div`
   margin: auto;
   max-width: 900px;
+  height: 100%;
   padding: 1em;
   color:${cssVars.fontColor};
 `;
@@ -35,17 +36,14 @@ function App() {
   console.log("initializing App...");
   return (
       <Container>
-
         <Columns>
           <div>
-
             <CommandTable />
           </div>
           <div>
               <Title>Linuxicon</Title>
               <FilterZone />
-              <p>A little linux lexicon</p>
-              <p>Scroll the Command Wheel, or use arrows.</p>
+              <p>A little linux lexicon<br/>Scroll the Command Wheel, or use arrows.</p>
               <TheDeets />
           </div>
 

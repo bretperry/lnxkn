@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "@emotion/styled";
 import { observer } from "mobx-react";
-
 import store from "../store";
 
 import ItemRow from "../components/ItemRow";
@@ -16,6 +15,7 @@ const Table = styled.table`
 	font-family: ${cssVars.fixedFont};
 	padding: 200px 0.6rem 1rem;
 	width: 100%;
+	overflow-y: scroll;
 `;
 const Thead = styled.thead`
 	display:none;
@@ -40,7 +40,7 @@ const CommandTable = () => {
 	    <Tbody>
 	      {store.filteredList
 	        .map((item) =>(
-	          <ItemRow 
+	          <ItemRow d
 	            listItem={item} 
 	            key={item.name} 
 	            onSelect={(item) => 

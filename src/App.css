@@ -3,6 +3,7 @@
 body{
   font-family:  Futura;
   background-color: #e2fffd !important;
+  height: 100%;
 }
 p{
   margin:  0 auto 1rem;
