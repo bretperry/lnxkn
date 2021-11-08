@@ -31,32 +31,37 @@ const StatsTable = styled.table`
 
 const ItemDetail = () => {
   console.log("init ItemDetail");
-  const {selectedItem} = useContext(MainContext);
+  // const {selectedItem} = useContext(MainContext);
 
-  let s = selectedItem;
+  // const { state:{selectedItem} } = useContext(MainContext);
 
-  console.log("s.name is ", s );
+  const { 
+    state: {selectedItem}, 
+  } = React.useContext(MainContext);
+  //debugger;
+  //et s = selectedItem;
 
-  return s ? (
+  //console.log("selectedItem.name = ", selectedItem.name );
+
+  return selectedItem ? (
     <div>
-      <ItemTitle>{s.alias || 'big time linux'}</ItemTitle>
-      
+      <ItemTitle>{selectedItem.alias || 'big time linux'}</ItemTitle>
       <DeetsDiv>
-              {s.stats &&       
+              {selectedItem.stats &&       
           <StatsTable>
             <tbody>
-              {Object.keys(s.stats).map((key) => (
+              {Object.keys(selectedItem.stats).map((key) => (
                 <tr key={key}>
                   <td>{key}</td>
-                  <td>{s.stats[key]}</td>
+                  <td>{selectedItem.stats[key]}</td>
                 </tr>
               ))}
             </tbody>
           </StatsTable>
         }
-        <p>{s.motto || "damn snazzy motto"}</p>
-        <p>spheres: {s.type.join(", ")}</p>
-        <div>{s.content || "notes here"}</div>
+        <p>{selectedItem.motto || "damn snazzy motto"}</p>
+        <p>spheres: {selectedItem.type.join(", ")}</p>
+        <div>{selectedItem.content || "notes here"}</div>
         <div>"man pages"</div>
       </DeetsDiv>
     </div>

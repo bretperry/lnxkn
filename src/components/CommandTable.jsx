@@ -51,7 +51,14 @@ const Tbody = styled.tbody`
 `;
 
 const CommandTable = () => {
-	const {list, filter, selectedItemSet } = useContext(MainContext);
+	
+	const {
+		state: {list, filter },
+		dispatch,  
+	} = React.useContext(MainContext);
+	
+	// const {list, filter, selectedItemSet } = useContext(MainContext);
+	
 	return(
 	  <Table >
 	    <Thead>
@@ -68,7 +75,10 @@ const CommandTable = () => {
 	          <ItemRow 
 	            listItem={item} 
 	            key={item.name} 
-	            onSelect={(item) => selectedItemSet(item)}
+	            onSelect={(item) => dispatch({
+	            	type: "SET_SELECTED",
+	            	payload: item,
+	            })}
 	          />
 	     ))}
 	    </Tbody>

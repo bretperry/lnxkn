@@ -22,12 +22,15 @@ const Input = styled.input`
 // };
 
 const FilterZone = () => {
-	const {filter, filterSet} = useContext(MainContext);
+	const { state: {filter}, dispatch} = React.useContext(MainContext);
 	return(
 		<Input
 	    	type ="text"
 	    	value={filter}
-	    	onChange={(evt)=> filterSet(evt.target.value)}
+	    	onChange={(evt)=> dispatch({
+	    		type: 'SET_FILTER',
+	    		payload: evt.target.value
+	    	})}
 		/>
 	);
 };

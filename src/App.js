@@ -10,48 +10,27 @@ import ItemDetail from "./components/ItemDetail";
 import FilterZone from "./components/FilterZone";
 import CommandTable from "./components/CommandTable";
 
-
-// const ItemType = PropTypes.shape({
-//   name: PropTypes.string.isRequired,
-//   alias: PropTypes.string.isRequired,
-//   motto: PropTypes.string.isRequired,
-//   type: PropTypes.arrayOf(PropTypes.string.isRequired)
-
-// });
-
-// const ItemRow = ({ listItem, onSelect }) => (
-//           <tr key={listItem.id} onClick={()=> onSelect(listItem)}>
-//             <td>{listItem.name}</td>
-//             <td>{listItem.type.join(", ")}</td>
-//           </tr>
-// );
-
-
-// ItemRow.propTypes = {
-//   listItem: PropTypes.arrayOf(ItemType)
-// }
-
-// const ItemDetail = ({name, alias, motto, type, content, stats}) => (
-//   <div>
-//     <ItemTitle>{name}</ItemTitle>
-//     <p>alias: {alias}</p>
-//     <p>motto: {motto}</p>
-//     <p>spheres: {type.join(", ")}</p>
-//     {stats &&       
-//       <table>
-//         <tbody>
-//           {Object.keys(stats).map((key) => (
-// {/*            <tr key={key}>
-//               <td>{key}</td>
-//               <td>{stats[key]}</td>
-//             </tr>*/}
-//           ))}
-//         </tbody>
-//       </table>
-//     }
-//     <div>{content}</div>
-//   </div>
-// );
+const magickReducer = (state, action) => {
+  switch (action.type){
+    case "SET_FILTER":
+      return {
+        ...state,
+        filter: action.payload,
+      };
+    case "SET_LIST":
+      return {
+        ...state,
+        list: action.payload,
+      };
+    case "SET_SELECTED":
+      return {
+        ...state,
+        selectedItem: action.payload,
+      }; 
+    default:
+      throw new Error("No action");
+  }
+};
 
 const Title = styled.h1`
   text-align:center;
@@ -59,7 +38,7 @@ const Title = styled.h1`
   font-weight: normal;
   letter-spacing: .6rem;
 `;
-const PageContainer = styled.div`
+const Container = styled.div`
   margin: auto;
   max-width: 900px;
   padding-top: 1em;
@@ -77,43 +56,59 @@ function App() {
 
   console.log("initializing App...");
   
-  const [filter, filterSet] = React.useState("");
-  const [list, listSet] = React.useState(null);
-  const [selectedItem, selectedItemSet] = React.useState(null);
+  // const [filter, filterSet] = React.useState("");
+  // const [list, listSet] = React.useState(null);
+  // const [selectedItem, selectedItemSet] = React.useState(null);
+  
+  const [state,dispatch] = React.useReducer(magickReducer, {
+    list: [],
+    filter: "",
+    selectedItem: null,
+  });
 
   const typeIcons = {
     networking: "&#128423;",
     disk: "&#128436;"
   }
-
-  console.log("filterSet: ", filterSet);
   
   React.useEffect(()=> {
     fetch("/list.json")
       .then(resp => resp.json())
-      .then((data) => {
-        listSet(data);
-        console.log("received ajax data: " + data);
-      });
+      .then((data) => 
+        dispatch({
+          type: 'SET_LIST',
+          payload: data,
+        })
+      );
   }, []);
 
-  if (!list) {
+  if (!state.list) {
     return <div>Loading data</div>;
   }
+  console.log("state= ",state);
+
+  // React.useEffect(()=> {
+  //   fetch("/list.json")
+  //     .then(resp => resp.json())
+  //     .then((data) => {
+  //       listSet(data);
+  //       console.log("received ajax data: " + data);
+  //     });
+  // }, []);
+
+  // if (!list) {
+  //   return <div>Loading data</div>;
+  // }
 
   return (
     <MainContext.Provider
       value={{
-        filter,
-        list,
-        filterSet,
-        listSet,
-        selectedItem,
-        selectedItemSet,
-        typeIcons
+        typeIcons,
+        state,
+        dispatch
       }}
     >
-      <PageContainer>
+      <Container>
         <Title>Linux Lexicon</Title>
         <Columns>
           <div>
@@ -124,7 +119,7 @@ function App() {
           </div>
           <ItemDetail />
         </Columns>
-      </PageContainer>
+      </Container>
     </MainContext.Provider>
   );
 }
