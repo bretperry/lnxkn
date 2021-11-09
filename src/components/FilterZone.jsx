@@ -9,11 +9,12 @@ import cssVars from "../cssVars";
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.2rem;
-  margin: 40px 0 20px;
-  font-size: large;
+  height: 60px;
+  padding: 0.8rem;
+  line-height: 60px;
+  margin: 58px 0 10px;
+  font-size: 28px;
   border: none;
-  top: 20px; right: 20px;
   background-color:${cssVars.fontColor};
   color:${cssVars.tableColor};
 `;

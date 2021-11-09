@@ -19,6 +19,7 @@ const ItemTitle = styled.h1`
   margin: .7rem 0 1rem;;
   font-size: ;
   font-family: ${cssVars.fixedFont};
+  height: 70px; 
 `;
 
 const DeetsDiv = styled.div`
@@ -31,7 +32,7 @@ const StatsTable = styled.table`
   font-family: ${cssVars.bodyFont};
   background-color: ${cssVars.fontColor};
   color: ${cssVars.tableColor};
-  font-size: x-small;
+  font-size: xx-small;
   padding: .7em;
   float: right;
   margin: .6rem;

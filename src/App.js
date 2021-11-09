@@ -16,19 +16,21 @@ const typeIcons = {
 const Title = styled.h1`
   font-family:Futura, sans serif;
   font-weight: normal;
-  font-size: xx-large;
-  letter-spacing: .5rem;
+  font-size: 62px;
+  letter-spacing: 0.3rem;
 `;
 const Container = styled.div`
   margin: auto;
   max-width: 1000px;
   padding: 1em;
   color:${cssVars.fontColor};
+  max-height: 100%;
+  over-flow: hidden;
 `;
 const Columns = styled.div`
   display: grid;
   grid-template-columns: 38.2% 61.8%;
-  grid-column-gap: 1rem;
+  grid-column-gap: 1.2rem;
 `;
 
 function App() {
@@ -42,9 +44,9 @@ function App() {
             <CommandTable />
           </div>
           <div>
-              <Title>Linuxicon</Title>
+              <Title>Linuxicon<span>~</span></Title>
 
-              <p>A little linux lexicon<br/>Scroll the Command Wheel, or use arrows (coming soon!).</p>
+              <p>A little linux lexicon<br/>Scroll the Command Wheel.</p>
               <TheDeets />
           </div>
 

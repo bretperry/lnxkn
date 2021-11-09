@@ -9,7 +9,13 @@ import cssVars from "../cssVars";
 
 const tableColor = '#feffe7';
 
+const TableBase = styled.div`
+	display: block;
+	height: 720px;
+	overflow-y:scroll;
+`;
 const Table = styled.table`
+	margin: 120px auto 650px;
 	background-color: ${cssVars.tableColor};
 	border: none;
 	font-weight:bold;
@@ -25,37 +31,47 @@ const Tbody = styled.tbody`
 	border: none;
 	font-weight:bold;
 	width: 100%;;
-
 `;
 
 const CommandTable = () => {
 
 	const [chosen, setChosen] = useState();
+	const scrollTableTo = (item) => {
+		
+		//move so as to only query the dom once
+		const base = document.getElementById("scrollingBase");
+		
+		// let selectEl = ?? // just need the item's element!
+		// let distance = selectEl.offsetTop - selectEl.marginTop;
+		// base.scroll(distance, 0);
+	};
 
 	return(
-	  <Table >
-	    <Thead>
-	      <tr>
-	        <th>Command</th>
-	        <th>Type</th>
-	      </tr>
-	    </Thead>
-	    <Tbody>
-	      {store.filteredList
-	        .map((item) =>(
-	          <ItemRow 
-	          	active={item === chosen}
-	            listItem={item} 
-	            key={item.name} 
-	            onSelect={(item) => {
-	            	store.setSelected(item);
-	            	setChosen(item);
-	            	
-	            }}
-	          />
-	     ))}
-	    </Tbody>
-	  </Table>
+		<TableBase id="scrollingBase">
+		  <Table id="scrollingTable">
+		    <Thead>
+		      <tr>
+		        <th>Command</th>
+		        <th>Type</th>
+		      </tr>
+		    </Thead>
+		    <Tbody>
+		      {store.filteredList
+		        .map((item) =>(
+		          <ItemRow 
+		          	active={item === chosen}
+		            listItem={item} 
+		            key={item.name} 
+		            onSelect={(item) => {
+		            	store.setSelected(item);
+		            	setChosen(item);
+		            	scrollTableTo(item);
+		            }}
+		          />
+		     ))}
+		    </Tbody>
+		  </Table>
+	  </TableBase>
 	);
 };
 
