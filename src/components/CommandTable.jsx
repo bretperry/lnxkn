@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "@emotion/styled";
 import { observer } from "mobx-react";
 
@@ -15,6 +15,7 @@ const Table = styled.table`
 	font-weight:bold;
 	font-family: ${cssVars.fixedFont};
 	width: 100%;
+	color: ${cssVars.fontColor};
 `;
 const Thead = styled.thead`
 	display:none;
@@ -28,6 +29,9 @@ const Tbody = styled.tbody`
 `;
 
 const CommandTable = () => {
+
+	const [chosen, setChosen] = useState();
+
 	return(
 	  <Table >
 	    <Thead>
@@ -40,11 +44,14 @@ const CommandTable = () => {
 	      {store.filteredList
 	        .map((item) =>(
 	          <ItemRow 
+	          	active={item === chosen}
 	            listItem={item} 
 	            key={item.name} 
-	            onSelect={(item) => 
-	            	store.setSelected(item)
-	   			}
+	            onSelect={(item) => {
+	            	store.setSelected(item);
+	            	setChosen(item);
+	            	
+	            }}
 	          />
 	     ))}
 	    </Tbody>

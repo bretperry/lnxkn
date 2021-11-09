@@ -29,7 +29,7 @@ const DeetsDiv = styled.div`
 
 const StatsTable = styled.table`
   font-family: ${cssVars.bodyFont};
-  background-color: ${cssVars.fontColorLt};
+  background-color: ${cssVars.fontColor};
   color: ${cssVars.tableColor};
   font-size: x-small;
   padding: .7em;

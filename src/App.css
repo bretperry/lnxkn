@@ -7,3 +7,9 @@ body{
 p{
   margin:  0 auto 1rem;
 }
+.active{
+  background-color: #f6ffa4 ;
+  border:  none;
+  height:  70px;
+  /*color: #a2a2a2;*/
+}

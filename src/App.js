@@ -21,13 +21,13 @@ const Title = styled.h1`
 `;
 const Container = styled.div`
   margin: auto;
-  max-width: 900px;
+  max-width: 1000px;
   padding: 1em;
   color:${cssVars.fontColor};
 `;
 const Columns = styled.div`
   display: grid;
-  grid-template-columns: 33% 67%;
+  grid-template-columns: 38.2% 61.8%;
   grid-column-gap: 1rem;
 `;
 
