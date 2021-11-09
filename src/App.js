@@ -38,14 +38,13 @@ function App() {
 
         <Columns>
           <div>
-
+            <FilterZone />
             <CommandTable />
           </div>
           <div>
               <Title>Linuxicon</Title>
-              <FilterZone />
-              <p>A little linux lexicon</p>
-              <p>Scroll the Command Wheel, or use arrows.</p>
+
+              <p>A little linux lexicon<br/>Scroll the Command Wheel, or use arrows (coming soon!).</p>
               <TheDeets />
           </div>
 

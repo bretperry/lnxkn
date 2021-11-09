@@ -1,125 +1,193 @@
 [
 
-
+    {
+      "name": "alias",
+      "alias": "Create an alias or pointer to a file",
+      "syntax": "alias [option] [name]='[value]'",
+      "example": "alias frename='Example/Test/file_rename.sh'",
+      "examples": [
+        "alias frename='Example/Test/file_rename.sh'"
+      ],
+      "type": [
+        "file"
+      ],
+      "stats":{
+        "good-intention":8,
+        "confusion":40
+      },
+      "content": ""
+    },
     {
       "name": "cd",
       "alias": "Change Directory",
-      "example": "cd /myfile/application",
-      "motto": "How you get around.",
+      "syntax": "cd [directory_name]",
+      "example": "cd dir_1/dir_2/dir_3",
+      "examples":[
+        
+      ],
       "type": [
         "file"
       ],
       "stats":{
         "ubiquity":9,
-        "danger":3
+        "finger-strain":17
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "dd",
       "alias": "Data Duplicator",
+      "motto": "watch where you dupe it :o",
       "example": "dd if = /dev/sda of = /dev/sdb conv=noerror, sync",
-      "motto": "Watch where you're writing.",
+      "examples":[
+        
+      ],
       "type": [
         "disk"
       ],
       "stats":{
         "abundance":4,
-        "danger":2
+        "whoops":4
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "grep",
-      "path": "/grep",
-      "desc": "grope the disk",
+      "alias": "Global Regular Expression Print",
+      "syntax": "grep [OPTIONS] PATTERN [FILE...]",
+      "example": "grep -x “phoenix number3” *",
+      "examples":[
+        
+      ],
       "type": [
         "disk",
         "search"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "stats":{
+        "nosiness":6,
+        "regexelence":70
+      },
+      "content": ""
     },
     {
-      "name": "ipconfig",
-      "path": "/ipconfig",
-      "desc": "configure that ipssissimus",
+      "name": "ifconfig",
+      "alias": "Interface Configurator",
+      "example": "",
+      "examples":[
+        
+      ],
       "type": [
         "networking"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "killall",
-      "path": "/killall",
-      "desc": "kill process by uttering its daemonic name",
+      "alias": "Kill Processes by Name or User",
+      "example": "killall -u [user-name]",
+      "examples":[
+        "killall -u [user-name]",
+        "killall -w [process-name]"
+      ],
       "type": [
         "process",
         "stop"
       ],
       "stats":{
-        "bloodlust":7,
-        "angst":9
+        "great sadness":100,
+        "great responsibility":100
       },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "pwd",
-      "path": "/pwd",
-      "desc": "pwn password",
+      "alias": "Password Wielding Device",
+      "example": "pwd mycatsname",
+      "examples":[
+        
+      ],
       "type": [
         "user",
-        "networking"
+        "network"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "stats":{
+        "":7,
+        "forgetfulness":9
+      },
+      "content": ""
     },
     {
       "name": "ssh",
-      "path": "/ssh",
+      "alias": "Secure Socket Shell",
       "motto": "secure socket shell",
+      "example": "pwd mycatsname",
+      "examples":[
+        
+      ],
       "type": [
-        "networking",
+        "network",
         "user"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "tcpdump",
-      "path": "/tcpdump",
+      "alias": "TCP/IP packet analyzer",
       "motto": "toss cookies properly",
+      "examples":[
+        
+      ],
       "type": [
         "disk",
         "network"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
+    },
+    {
+      "name": "tree",
+      "alias": "map the directory tree",
+      "motto": "",
+      "examples":[
+        
+      ],
+      "type": [
+        "disk",
+        "network"
+      ],
+      "content": ""
     },
     {
       "name": "touch ",
-      "path": "/touch",
-      "motto": "Change file timestamps",
+      "alias": "Touch / create / timestamp",
+      "motto": "Create file and/or change timestamp",
+      "examples":[
+        
+      ],
       "type": [
         "file",
         "disk"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
-      "name": "user",
-      "path": "/user",
+      "name": "users",
+      "alias": "Users who are logged in",
       "motto": "who is user",
+      "syntax": "users [OPTION]... [FILE]",
+      "example": "users /var/run/utmp | wc -w",
       "type": [
         "disk",
         "search"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     },
     {
       "name": "whoami",
-      "path": "/whoami",
-      "motto": "who do i be?",
+      "alias": "Who is current user",
       "type": [
         "user",
-        "networking"
+        "network"
       ],
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      "content": ""
     }
   ]

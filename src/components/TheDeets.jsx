@@ -16,8 +16,8 @@ const manUrlRoot = "https://man.cx/";
 const ItemTitle = styled.h1`
   background-color: ${cssVars.tableColor};
   padding: ${cssVars.tablePadding};
-  margin: 0 0 1rem;;
-  font-size: x-large;
+  margin: .7rem 0 1rem;;
+  font-size: ;
   font-family: ${cssVars.fixedFont};
 `;
 
@@ -34,7 +34,11 @@ const StatsTable = styled.table`
   font-size: x-small;
   padding: .7em;
   float: right;
-  margin: .2rem;
+  margin: .6rem;
+`;
+const H2 = styled.h2`
+  margin: .7rem 0;
+  font-size: medium;
 `;
 
 const TheDeets = () => {
@@ -45,7 +49,7 @@ const TheDeets = () => {
 
   return sel ? (
     <div>
-      <ItemTitle>{sel.alias }</ItemTitle>
+      <ItemTitle>{sel.name}</ItemTitle>
       <DeetsDiv>
               {sel.stats &&       
           <StatsTable>
@@ -59,11 +63,12 @@ const TheDeets = () => {
             </tbody>
           </StatsTable>
         }
+        <H2>{sel.alias}</H2>
         <p>{sel.motto }</p>
+        {sel.syntax && <p>{sel.syntax }</p>}
+        <p>{sel.example }</p>
         <p>spheres: {sel.type.join(", ")}</p>
         <div>{sel.content}</div>
-        <ManPage />
-        <p>The end</p>
       </DeetsDiv>
     </div>
   ) : null;

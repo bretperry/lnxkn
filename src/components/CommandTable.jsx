@@ -14,7 +14,6 @@ const Table = styled.table`
 	border: none;
 	font-weight:bold;
 	font-family: ${cssVars.fixedFont};
-	padding: 200px 0.6rem 1rem;
 	width: 100%;
 `;
 const Thead = styled.thead`

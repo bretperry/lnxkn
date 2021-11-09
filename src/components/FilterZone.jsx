@@ -8,12 +8,14 @@ import styled from "@emotion/styled";
 import cssVars from "../cssVars";
 
 const Input = styled.input`
-	position: fixed;
-  width: 30%;
+  width: 100%;
   padding: 0.2rem;
+  margin: 40px 0 20px;
   font-size: large;
   border: none;
   top: 20px; right: 20px;
+  background-color:${cssVars.fontColor};
+  color:${cssVars.tableColor};
 `;
 
 const FilterZone = () => {
